@@ -1,0 +1,15 @@
+server:
+  port: 9102
+
+spring:
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

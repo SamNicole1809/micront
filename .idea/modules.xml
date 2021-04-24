@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/micront.iml" filepath="$PROJECT_DIR$/.idea/micront.iml" />
+      <module fileurl="file://$PROJECT_DIR$/micront-authorization/micront-authorization.iml" filepath="$PROJECT_DIR$/micront-authorization/micront-authorization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/micront-dependencies/micront-dependencies.iml" filepath="$PROJECT_DIR$/micront-dependencies/micront-dependencies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/micront-gateway/micront-gateway.iml" filepath="$PROJECT_DIR$/micront-gateway/micront-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/micront-printing/micront-printing.iml" filepath="$PROJECT_DIR$/micront-printing/micront-printing.iml" />
+    </modules>
+  </component>
+</project>
