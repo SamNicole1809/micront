@@ -2,6 +2,8 @@ server:
   port: 9101
 
 spring:
+  application:
+    name: micront-authorization
   main:
     allow-bean-definition-overriding: true
   datasource:
@@ -22,6 +24,10 @@ spring:
     host: 127.0.0.1
     port: 6379
     password:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 
 management:
   endpoints:

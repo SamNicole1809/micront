@@ -41,7 +41,7 @@ public class MicrontResourceServer extends ResourceServerConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/**")
-                .access("#oauth2.hasScope('all')")
+                .access("#oauth2.hasScope('admin')")
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }

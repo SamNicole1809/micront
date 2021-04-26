@@ -1,15 +1,15 @@
-package com.micront.printing;
+package com.micront.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-@SpringBootApplication
 @EnableDiscoveryClient
-public class PrintingApplication {
+@SpringBootApplication
+public class GatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PrintingApplication.class, args);
+        SpringApplication.run(GatewayApplication.class, args);
     }
 
 }

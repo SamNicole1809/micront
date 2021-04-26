@@ -1,0 +1,31 @@
+server:
+  port: 9103
+
+spring:
+  application:
+    name: micront-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    # http://gateway_ip:gateway_port/application_name/uri
+    # GO -> http://application_name/uri
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+      routes:
+        - id: authorization
+          uri: lb://micront-authorization
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+            - TokenAuthorization=0
+        - id: printing
+          uri: lb://micront-printing
+          predicates:
+            - Path=/print/**
+          filters:
+            - StripPrefix=1
+            - TokenAuthorization=1

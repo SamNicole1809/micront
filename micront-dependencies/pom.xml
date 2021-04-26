@@ -13,6 +13,7 @@
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
         <mybatis-plus.version>3.4.0</mybatis-plus.version>
         <fastjson.version>1.2.75</fastjson.version>
+        <spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
     </properties>
 
     <licenses>
@@ -51,6 +52,13 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <!-- jwt -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <scope>compile</scope>
+                <version>${spring-security-jwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
