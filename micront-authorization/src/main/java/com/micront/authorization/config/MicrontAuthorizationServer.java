@@ -47,13 +47,10 @@ public class MicrontAuthorizationServer extends AuthorizationServerConfigurerAda
     public AuthorizationServerTokenServices tokenServices() {
         DefaultTokenServices tokenService = new DefaultTokenServices();
         tokenService.setClientDetailsService(clientDetailsService);
-        tokenService.setSupportRefreshToken(true);
         tokenService.setTokenStore(tokenStore);
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(Collections.singletonList(accessTokenConverter));
         tokenService.setTokenEnhancer(tokenEnhancerChain);
-        tokenService.setAccessTokenValiditySeconds(60 * 60 * 2);
-        tokenService.setRefreshTokenValiditySeconds(60 * 60 * 24 * 3);
         return tokenService;
     }
 

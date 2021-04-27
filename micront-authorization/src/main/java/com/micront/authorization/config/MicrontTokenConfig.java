@@ -1,5 +1,9 @@
 package com.micront.authorization.config;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.micront.authorization.entity.SysUser;
+import com.micront.authorization.mapper.SysUserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
@@ -15,6 +19,9 @@ import java.util.Map;
 @Configuration
 public class MicrontTokenConfig {
 
+    @Autowired
+    private SysUserMapper userMapper;
+
     @Bean
     public TokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());
@@ -25,11 +32,10 @@ public class MicrontTokenConfig {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter() {
             @Override
             public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
-                String username = authentication.getUserAuthentication().getName();
-                System.out.println(username);
+                String userPhone = authentication.getUserAuthentication().getName();
+                SysUser user = userMapper.selectOne(new QueryWrapper<SysUser>().lambda().eq(SysUser::getUserPhone, userPhone));
                 Map<String, Object> info = new HashMap<>(16);
-                info.put("user_id", "11112222");
-                info.put("team_id", "22123123123");
+                info.put("user_id", user.getId());
                 ((DefaultOAuth2AccessToken)accessToken).setAdditionalInformation(info);
                 return super.enhance(accessToken, authentication);
             }

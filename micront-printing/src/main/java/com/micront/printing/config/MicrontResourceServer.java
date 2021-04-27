@@ -18,6 +18,10 @@ public class MicrontResourceServer extends ResourceServerConfigurerAdapter {
 
     @Autowired
     private TokenStore tokenStore;
+    @Autowired
+    private MicrontAccessDeniedHandler accessDeniedHandler;
+    @Autowired
+    private MicrontAuthExceptionEntryPoint authExceptionEntryPoint;
 
     @Bean
     public ResourceServerTokenServices tokenServices() {
@@ -33,13 +37,17 @@ public class MicrontResourceServer extends ResourceServerConfigurerAdapter {
         resources
                 .resourceId("res1")
                 .tokenStore(tokenStore)
-                .stateless(true);
+                .stateless(true)
+                .accessDeniedHandler(accessDeniedHandler)
+                .authenticationEntryPoint(authExceptionEntryPoint);
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/login")
+                .permitAll()
                 .antMatchers("/**")
                 .access("#oauth2.hasScope('admin')")
                 .and()
